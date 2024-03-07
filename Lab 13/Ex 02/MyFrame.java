@@ -9,14 +9,14 @@ public class MyFrame {
     private JFrame fr;
     private JPanel panel;
     private MyClock clock;
-    private Thread t;
+    private Thread  t;
 
     // Init
     public MyFrame() {
         panel = new JPanel();
         fr = new JFrame();
         clock = new MyClock();
-        t = new Thread();
+        t = new Thread(clock);
         t.start();
         panel.add(clock);
         fr.add(panel);
