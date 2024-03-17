@@ -1,15 +1,15 @@
 
-package Ex02;
+package EX_02;
 
-public class Book {
+import java.io.*;
+
+public class Book implements Serializable{
     private String name;
     private double price;
     private String type;
 
     public Book() {
-        name = "";
-        price = 0;
-        type = "";
+        this("", 0.0, "");
     }
     public Book(String name, double price, String type) {
         this.name = name;
@@ -26,7 +26,6 @@ public class Book {
     public void setType(String type) {
         this.type = type;
     }
-
     public String getName() {
         return name;
     }

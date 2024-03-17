@@ -1,55 +1,78 @@
 
-package Ex02;
+package EX_02;
 
 import java.awt.*;
-import java.awt.event.*;
 import javax.swing.*;
 
-public class BookAdd extends JFrame {
-    private JPanel p1, p2, p3, p4;
-    private JLabel name, price, type;
-    private JTextField text_name , text_price, text_index;
-    private JComboBox text_type;
-    private JButton bt1;
-    
+public class BookAdd extends JFrame{
+
+    private final JLabel label01, label02, label03;
+    private final JTextField textField01, textField02;
+    private final JComboBox comboBox;
+    private final JPanel panel01, panel02, panel03, panel04;
+    private final JButton button01;
+
     public BookAdd() {
-        setDefaultCloseOperation(this.EXIT_ON_CLOSE);
-        name = new JLabel("  Name");
-        type = new JLabel("  Type");
-        price = new JLabel("  Price");
-        bt1 = new JButton("Insert");
-        text_name = new JTextField();
-        text_price = new JTextField();
-        text_type = new JComboBox();
-        text_type.addItem("General");
-        text_type.addItem("Computer");
-        text_type.addItem("Math&Sci");
-        text_type.addItem("Photo");
-        p1 = new JPanel();
-        p2 = new JPanel();
-        p3 = new JPanel();
-        p4 = new JPanel();
-        
-        p1.add(name);
-        p1.add(text_name);
-        p1.setLayout(new GridLayout(1, 2));
+        setResizable(false);
+        button01 = new JButton("Insert");
+        label01 = new JLabel("  Name");
+        label02 = new JLabel("  Price");
+        label03 = new JLabel("  Type");
+        textField01 = new JTextField();
+        textField02 = new JTextField();
+        comboBox = new JComboBox();
+        comboBox.addItem("General");
+        comboBox.addItem("Computer");
+        comboBox.addItem("Math&Sci");
+        comboBox.addItem("Photo");
+        panel01 = new JPanel();
+        panel02 = new JPanel();
+        panel03 = new JPanel();
+        panel04 = new JPanel();
 
-        p2.add(price);
-        p2.add(text_price);
-        p2.setLayout(new GridLayout(1, 2));
+        panel01.add(label01);
+        panel01.add(textField01);
+        panel01.setLayout(new GridLayout(1, 2));
+        add(panel01);
 
-        p3.add(type);
-        p3.add(text_type);
-        p3.setLayout(new GridLayout(1, 2));
-        
-        add(p1);
-        add(p2);
-        add(p3);
-        add(p4);
-        setLayout(new GridLayout(5, 1));
-        
-        setLocationRelativeTo(null);
+        panel02.add(label02);
+        panel02.add(textField02);
+        panel02.setLayout(new GridLayout(1, 2));
+        add(panel02);
+
+        panel03.add(label03);
+        panel03.add(comboBox);
+        panel03.setLayout(new GridLayout(1, 2));
+        add(panel03);
+
+        panel04.add(button01);
+        add(panel04);
+
+        setLayout(new GridLayout(4, 1));
         pack();
+        setLocationRelativeTo(null);
         setVisible(true);
+        setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }
+    
+    public JButton getButton() {
+        return button01;
+    }
+    
+    public String getTextName() {
+        return textField01.getText();
+    }
+    public double getTextPrice() {
+        return Double.parseDouble(textField02.getText());
+    }
+    public String getTextType() {
+        return comboBox.getSelectedItem().toString();
+    }
+    public Book getBook() {
+        Book book = new Book();
+        book.setName(getTextName());
+        book.setPrice(getTextPrice());
+        book.setType(getTextType());
+        return book;
     }
 }
